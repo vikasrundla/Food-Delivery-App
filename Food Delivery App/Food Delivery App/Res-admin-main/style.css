@@ -1,0 +1,813 @@
+/*=============== Google Fonts ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+/*=============== Css Universal Selector ===============*/
+* 
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    user-select: none;
+    list-style: none;
+    text-decoration: none;
+}
+
+html 
+{
+    font-size: 10px; /* Here 10px = 1rem; */ 
+} 
+
+
+/*=============== Css Variable ===============*/ 
+:root
+{
+    /*=============== colors ===============*/  
+    --body-color: linear-gradient(to right, #ccd9ff, #cce0ff);
+    --container-color: linear-gradient(to right bottom, rgba(255,255,255,.5), rgba(255,255,255,.4));
+    --f1-color: #000;
+    --f2-color: #808080;
+    --f3-color: #fff;
+    --f4-color: #009933;
+    --f5-color: #ff66b3;
+    --f6-color: #ff99cc;
+    --f7-color: rgba(104,80,80,0.03);
+    --f8-color: rgba(104,80,80,0.05);
+    --f9-color: #bb99ff;
+    --f10-color: #c2d6d6;
+
+    /*=============== font sizes ===============*/ 
+    --xxl-fs: 3.5rem;
+    --xl-fs: 2.8rem;
+    --l-fs: 2.5rem;
+    --m-fs: 2.2rem;
+    --s-fs: 2rem;
+    --xs-fs: 1.8rem;
+    --h1-fs: 1.6rem;
+    --h2-fs: 1.4rem;
+    --text1-fs: 1.2rem;
+    --text2-fs: 1.1rem;
+    --text3-fs: 1rem;
+    --text4-fs: 2.4rem; 
+
+    /*=============== font Weight ===============*/
+    --normal-fw: 300;
+    --medium-fw: 500;
+    --bold-fw: 700;  
+
+    /*=============== Padding ===============*/  
+    --pd-0: 0;
+    --pd-2-5: 2.5rem;
+    --pd-2: 2rem;
+    --pd-1-5: 1.5rem;
+    --pd-1: 1rem;
+    --pd-0-8: 0.8rem;
+    --pd-0-6: 0.6rem;
+    --pd-0-5: 0.5rem;
+
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--body-color);
+}
+
+
+/*============= Container Grid Css =============*/  
+.container
+{
+    width: 85%;
+    height: 85vh;
+    background: var(--container-color);
+    display: grid;
+    grid-template-columns: .2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "sidebar main";
+    gap: 1rem;
+    padding: var(--pd-2-5);
+    border-radius: 3rem;
+    backdrop-filter: blur(2rem);
+    box-shadow: 0 0 5px rgba(255,255,255,.5);
+}
+
+.sidebar
+{
+    grid-area: sidebar; 
+}
+
+.main
+{
+    grid-area: main;
+    background: var(--f3-color);
+}
+
+
+/*============= Main Div Grid Css =============*/ 
+.main
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr .8fr;
+    grid-template-rows: .3fr .5fr 1fr;
+    grid-template-areas: "header header header"
+                         "category category offer"
+                         "item item article";
+    gap: .5rem;
+    padding: var(--pd-2-5);
+    padding-top: var(--pd-1);
+    padding-bottom: var(--pd-1);
+    border-radius: 3rem;
+    overflow-y: scroll;
+} 
+
+.main::-webkit-scrollbar
+{
+    width: 0;
+}
+
+.main .header
+{
+    grid-area: header;  
+}
+
+.main .category
+{
+    grid-area: category; 
+}
+
+.main .offer
+{
+    grid-area: offer; 
+}
+
+.main .item
+{
+    grid-area: item; 
+}
+
+.main .article
+{
+    grid-area: article; 
+}
+
+
+/*============= Sidebar Css =============*/  
+.sidebar
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sidebar .profile
+{
+    text-align: center;
+}
+
+.sidebar .profile img
+{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2rem;
+    border: 3px solid #fff;
+    filter: grayscale(100%);
+}
+
+.sidebar .profile h1
+{
+    text-transform: capitalize;
+    font-weight: var(--bold-fw);
+}
+
+.sidebar ul li .ri
+{
+    font-size: var(--s-fs);
+    background: var(--f3-color);
+    padding: var(--pd-1-5);
+    border-radius: 1.8rem;
+}
+
+.sidebar ul li
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 2rem auto;
+    width: 80%;
+    border-radius: 2rem;
+    transition: .3s;
+}
+
+.sidebar ul li a
+{
+    position: absolute;
+    left: 6.5rem;
+    text-transform: capitalize;
+    color: var(--f1-color);
+    font-weight: var(--bold-fw);
+    font-size: var(--text1-fs);
+}
+
+.sidebar ul .activeLink .ri,
+.sidebar ul li:hover .ri
+{
+    background: var(--f5-color);
+    color: var(--f3-color);
+    border-radius: 1.8rem;
+    transition: .3s;
+}
+
+.sidebar ul .activeLink,
+.sidebar ul li:hover
+{
+    background: var(--f6-color);
+}
+
+.sidebar ul .activeLink a,
+.sidebar ul li:hover a
+{
+    color: var(--f3-color);
+}
+
+.sidebar .card
+{
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    width: 85%;
+    height: 14.5rem;
+    background: var(--f3-color);
+    border-radius: 3rem;
+}
+
+.sidebar .card img
+{
+    position: absolute;
+    top: -6rem;
+    left: 2rem;
+    width: 11rem;
+    height: 11rem;
+    transition: .3s;
+}
+
+.sidebar .card:hover img
+{
+    transition: .3s;
+    transform: scale(1.1);
+}
+
+.sidebar .card h1
+{
+    position: absolute;
+    left: 2rem;
+    top: 6rem;
+    line-height: 2.5rem;
+    text-transform: capitalize;
+    font-size: var(--m-fs);
+    font-weight: var(--medium-fw);
+    font-family: 'Secular One', sans-serif;
+}
+
+.sidebar .card h2
+{
+    position: absolute;
+    top: 11rem;
+    left: 2rem;
+    font-size: var(--h2-fs);
+    text-transform: capitalize;
+}
+
+.sidebar .card .ri
+{
+    position: absolute;
+    bottom: 1.8rem;
+    right: 2.5rem;
+}
+
+/*============= Header Css =============*/ 
+.header
+{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .greeting
+{
+    position: relative;
+    margin-left: 2.5rem;
+}
+
+.header .greeting h1
+{
+    line-height: 3rem;
+    font-size: var(--l-fs);
+    letter-spacing: .2rem;
+    font-family: 'Secular One',  sans-serif;
+    font-weight: var(--medium-fw);
+}
+
+.header .greeting img
+{
+    border-radius: 50%;
+    position: absolute;
+    top: 3.3rem;
+    left: 10.8rem;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.header .searchbox
+{
+    position: relative;
+    background: var(--f8-color);
+    border-radius: 1rem;
+    padding: var(--pd-0-5);
+}
+
+.header .searchbox input
+{
+    width: 30rem;
+    border: none;
+    outline: none;
+    padding: var(--pd-0-5);
+    padding-left: var(--pd-1-5);
+    background: transparent;
+}
+
+.header .searchbox .ri
+{
+    position: absolute;
+    top: 1.05rem;
+    right: 1rem;
+    font-size: var(--xs-fs);
+    color: var(--f2-color);
+    cursor: pointer;
+}
+
+.header .cart
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 2.5rem;
+    background: var(--f1-color);
+    border-radius: 1rem;
+    transition: .3s;
+}
+
+.header .cart .ri
+{
+    font-size: var(--text4-fs);
+    color: var(--f3-color);
+}
+
+.header .cart span
+{
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--f10-color);
+    color: var(--f3-color);
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*============= Category Css =============*/  
+.category
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: scroll;
+    cursor: pointer;
+}
+
+.category .categoryItem
+{
+    display: flex;
+    align-items: center;
+    margin-left: 2.5rem;
+}
+
+.category .categoryItem .card
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--f7-color);
+    min-width: 7rem;
+    height: 12rem;
+    text-align: center;
+    padding: var(--pd-0-5);
+    margin: 1rem;
+    border-radius: 4rem;
+}
+
+.category .categoryItem .card img
+{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-bottom: .5rem;
+}
+
+.category .categoryItem .card h1
+{
+    text-transform: capitalize;
+    font-size: var(--text1-fs);
+    font-weight: var(--normal-fw);
+}
+
+.category::-webkit-scrollbar
+{
+    height: 2px;
+    background: transparent; 
+}
+
+.category::-webkit-scrollbar-thumb
+{
+    background: transparent;
+    border-radius: 3rem;
+}
+
+.category:hover::-webkit-scrollbar-thumb
+{
+    background: var(--body-color);
+    border-radius: 3rem;
+}
+
+
+/*============= Offer Card Css =============*/ 
+.offer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offer .card
+{
+    position: relative;
+    background: var(--f9-color);
+    border-radius: 3rem;
+    width: 90%;
+    height: 90%;
+}
+
+.offer .card h1
+{
+    font-size: var(--xl-fs);
+    position: absolute;
+    top: 5rem;
+    left: 3rem;
+    color: var(--f3-color);
+}
+
+.offer .card h2
+{
+    position: absolute;
+    top: 8.5rem;
+    left: 3rem;
+    font-size: var(--h2-fs);
+    color: var(--f3-color);
+    font-weight: normal;
+}
+
+.offer .card img
+{
+    width: 9rem;
+    height: 9rem;
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    transform: rotate(-30deg);
+}
+
+
+/*============= Item Css =============*/ 
+.item
+{
+    padding: var(--pd-1); 
+    overflow-y: scroll;
+}
+
+.item .itemHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--pd-1);
+}
+
+.item .itemHeader .tittle
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.item .itemHeader .tittle h1
+{
+    text-transform: capitalize;
+    font-size: var(--h1-fs);
+}
+
+.item .itemHeader .tittle .ri
+{
+    font-size: var(--xs-fs);
+    padding: var(--pd-0-8);
+    margin-left: 1rem;
+    border-radius: 1rem;
+    background: var(--f7-color);
+}
+
+.item .itemHeader .viewAll
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.item .itemHeader .viewAll h1
+{
+    text-transform: capitalize;
+    font-size: var(--text1-fs);
+}
+
+.item .itemHeader .viewAll .ri
+{
+    font-size: var(--xs-fs);
+    padding: var(--pd-0-8);
+    margin-left: 1rem;
+    border-radius: 1rem;
+    background: var(--f7-color);
+}
+
+.item .box
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-auto-rows: minmax(20rem, max-content);
+    grid-gap: 1rem;
+    grid-row-gap: 4.5rem;
+}
+
+.item .box .itemCard
+{
+    position: relative;
+    top: 4rem;
+    background: var(--f7-color);
+    border-radius: 3rem;
+    transition: .3s;
+} 
+
+.item .box .itemCard:hover
+{
+    background: var(--f8-color);
+}
+
+.item .box .itemCard img
+{
+    position: absolute;
+    left: 5rem;
+    top: -4rem;
+    width: 10rem;
+    height: 10rem;
+    transition: .3s;
+}
+
+.item .box .itemCard:hover img
+{
+    transform: scale(1.1);
+}
+
+.item .box .itemCard h1
+{
+    position: absolute;
+    top: 7rem;
+    left: 2rem;
+    text-transform: capitalize;
+}
+
+.item .box .itemCard p
+{
+    position: absolute;
+    top: 9.8rem;
+    left: 2rem;
+    font-size: var(--text1-fs);
+    width: 90%;
+}
+
+.item .box .itemCard .price
+{
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2rem;
+    font-size: var(--h1-fs);
+    font-weight: var(--bold-fw);
+    transition: .3s;
+}
+
+.item .box .itemCard:hover .price
+{
+    color: var(--f4-color);
+}
+
+.item .box .itemCard .ri-heart-fill
+{
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-size: var(--h2-fs);
+    border: 1px solid #000;
+    padding: var(--pd-0-8);
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.item .box .itemCard:hover .ri-heart-fill
+{
+    background: var(--f1-color);
+    color: var(--f3-color);
+}
+
+.item::-webkit-scrollbar
+{
+    background: transparent;
+    width: .2rem;
+}
+
+.item::-webkit-scrollbar-thumb
+{
+    background: transparent;
+    border-radius: 3rem;
+}
+
+.item:hover::-webkit-scrollbar-thumb
+{
+    background: var(--body-color);
+}
+
+/*============= Article Css =============*/
+.article
+{
+    overflow-y: scroll;
+}
+
+.article::-webkit-scrollbar
+{
+    width: .2rem;
+    background: transparent;
+}
+
+.article::-webkit-scrollbar-thumb
+{
+    background: transparent;
+}
+
+.article:hover::-webkit-scrollbar-thumb
+{
+    background: var(--body-color);
+    border-radius: 3rem;
+}
+
+.article .articleHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--pd-1);
+    width: 85%;
+    margin: 0 auto;
+}
+
+.article .articleHeader h1
+{
+    text-transform: capitalize;
+    font-size: var(--h1-fs);
+}
+
+.article .articleHeader .ri
+{
+    font-size: var(--xs-fs);
+    padding: var(--pd-0-8);
+    border-radius: 1rem;
+    background: var(--f7-color);
+}
+
+.article .box
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+}
+
+.article .box .list
+{
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin: 1rem auto;
+    cursor: pointer;
+}
+
+.article .box .list .icon img
+{
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #99ddff;
+    padding: var(--pd-0-6);
+    border-radius: 1rem;
+}
+
+.article .box .list:nth-child(1) .icon img
+{
+    background: #99ddff;
+}
+
+.article .box .list:nth-child(2) .icon img
+{
+    background: #ffe6ff;
+}
+
+.article .box .list:nth-child(3) .icon img
+{
+    background: #e0ccff;
+}
+
+.article .box .list:nth-child(4) .icon img
+{
+    background: #ffffcc;
+}
+
+.article .box .list .content
+{
+    position: relative;
+    margin-left: .8rem;
+}
+
+.article .box .list .content p
+{
+    font-size: var(--text2-fs);
+    font-weight: var(--bold-fw);
+    text-transform: capitalize;
+}
+
+.article .box .list .content p span
+{
+    font-size: var(--text1-fs);
+}
+
+.article .box .list .content .comment
+{
+    display: flex;
+}
+
+.article .box .list .content .comment img
+{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border-left: 2px solid #fff;
+}
+
+.article .box .list .content .comment .likes
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffe6;
+    border-radius: 3rem;
+    padding: 0 var(--pd-0-5);
+    border-left: 1px solid #fff;
+}
+
+.article .box .list .content .comment .likes img
+{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.article .box .list .content .comment .likes span
+{
+    font-size: var(--text3-fs);
+    margin-left: .5rem;
+    font-weight: var(--bold-fw);
+}
